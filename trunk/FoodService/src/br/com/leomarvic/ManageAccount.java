@@ -36,7 +36,7 @@ public class ManageAccount extends Activity {
         else
         {
         	String balance = FoodService.hHandler.getUserBalance(FoodService.active_user);
-        	loggedUserTextView.setText("Usuário Ativo: " + FoodService.active_user + " | " + "Saldo: " + balance);
+        	loggedUserTextView.setText("Usuário Ativo: " + FoodService.active_user + "\n" + "Saldo: " + balance);
         	loggedUserTextView.setTextColor(Color.GREEN);
         }
 
@@ -62,15 +62,19 @@ public class ManageAccount extends Activity {
     				
     				TextView textView = (TextView) findViewById(R.id.textViewLoggedUser);
     	        	String balance = FoodService.hHandler.getUserBalance(FoodService.active_user);
-    	        	textView.setText("Usuário Ativo: " + FoodService.active_user + " | " + "Saldo: " + balance);
+    	        	textView.setText("Usuário Ativo: " + FoodService.active_user + "\n" + "Saldo: " + balance);
     	            textView.setTextColor(Color.GREEN);
     			}
         		else
         		{
     				FoodService.active_user = null;
     				Context context = getApplicationContext();
-    				CharSequence text = "Usuário ou Senha Inaválidos!";
+    				CharSequence text = "Usuário ou Senha Inválidos!";
     				int duration = Toast.LENGTH_SHORT;
+    		        TextView textView = (TextView) findViewById(R.id.textViewLoggedUser);
+
+    				textView.setText("Nenhum Usuário Ativo");
+    	        	textView.setTextColor(Color.RED);
 
     				Toast toast = Toast.makeText(context, text, duration);
     				toast.show();
