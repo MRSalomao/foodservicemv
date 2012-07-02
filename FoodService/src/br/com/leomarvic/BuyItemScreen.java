@@ -26,7 +26,6 @@ public class BuyItemScreen extends Activity {
         setContentView(R.layout.buyitem);
         
         currentBalance = (TextView) findViewById(R.id.tvCurrentBalance);
-        currentBalance.setText("Saldo: " + FoodService.hHandler.getUserBalance(FoodService.active_user));
         
         Item current_item = ItemListScreen.selectedItem;
         
@@ -54,18 +53,18 @@ public class BuyItemScreen extends Activity {
         TextView itemDescTextView = (TextView) findViewById(R.id.textViewBuyItemDesc);
         itemDescTextView.setText("Descrição: "+current_item.getDesc());
         
-       /* //Check if logged user, then change text view to show which user
-        TextView loggedUserTextView = (TextView) findViewById(R.id.textViewLoggedUser);
+        //Check if logged user, then change text view to show which user
+        //TextView loggedUserTextView = (TextView) findViewById(R.id.textViewLoggedUser);
         if (FoodService.active_user == null)
         {
-        	loggedUserTextView.setText("Nenhum Usuário Ativo");
-        	loggedUserTextView.setTextColor(Color.RED);
+        	currentBalance.setText("Nenhum Usuário Ativo");
+        	currentBalance.setTextColor(Color.RED);
         }
         else
         {
-        	loggedUserTextView.setText("Usuário Ativo: " + FoodService.active_user);
-        	loggedUserTextView.setTextColor(Color.GREEN);
-        }*/
+            currentBalance.setText("Saldo: " + FoodService.hHandler.getUserBalance(FoodService.active_user));
+        	//loggedUserTextView.setTextColor(Color.GREEN);
+        }
 
         
         ( (Button)findViewById(R.id.btRefresh) ).setOnClickListener(new View.OnClickListener() {	
